@@ -8,15 +8,21 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
+    
+    var printlnToLogger = function(message) {
+        $('#logger').append(message + '\n');
+        $('body').animate({ scrollTop: $("#logger").attr("scrollHeight") }, 100);
+    };
+    
     var scanner = new BarcodeScanner({
         waitTolerance: 10000,
         variationTolerance: 10000,
         debug: true,
         scanCallback: function(code) {
-            $('div.logger').append('RECEIVED CODE: ' + code + '\n');
+            printlnToLogger('RECEIVED CODE: ' + code);
         },
         debugCallback: function(message) {
-            $('div.logger').append('[DEBUG] ' + message + '\n');
+            printlnToLogger('[DEBUG] ' + message);
         }
     });
 
@@ -28,7 +34,11 @@ $(document).ready(function() {
 </head>
 <body>
 
-<div class="logger" style="font: 12pt 'Courier New'; white-space: pre;">
+<h1 style="margin: 0; padding: 0;">BarcodeScanner.js Tester</h1>
+<p style="margin: 0; padding: 0;">Tolerances have been increased, mash on your keyboard!</p>
+
+
+<div id="logger" style="font: 12pt 'Courier New'; white-space: pre; margin: 5px 0; padding: 0;">
 LOGGER
 ------
 </div>
