@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Barcode Scanner Test</title>
+
+<script type="text/javascript" src="../lib/barcodescanner.js"></script>
+<script type="text/javascript" src="./jquery-1.4.2.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var scanner = new BarcodeScanner({
+		waitTolerance: 10000,
+		variationTolerance: 10000,
+		debug: true,
+		scanCallback: function(code) {
+			$('div.logger').append('RECEIVED CODE: ' + code + '\n');
+		},
+		debugCallback: function(message) {
+			$('div.logger').append('[DEBUG] ' + message + '\n');
+		}
+	});
+
+	$(window).keypress(scanner.getKeypressListener());
+});
+
+</script>
+
+</head>
+<body>
+
+<div class="logger" style="font: 12pt 'Courier New'; white-space: pre;">
+LOGGER
+------
+</div>
+
+</body>
+</html>
