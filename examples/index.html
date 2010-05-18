@@ -8,19 +8,19 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	var scanner = new BarcodeScanner({
-		waitTolerance: 10000,
-		variationTolerance: 10000,
-		debug: true,
-		scanCallback: function(code) {
-			$('div.logger').append('RECEIVED CODE: ' + code + '\n');
-		},
-		debugCallback: function(message) {
-			$('div.logger').append('[DEBUG] ' + message + '\n');
-		}
-	});
+    var scanner = new BarcodeScanner({
+        waitTolerance: 10000,
+        variationTolerance: 10000,
+        debug: true,
+        scanCallback: function(code) {
+            $('div.logger').append('RECEIVED CODE: ' + code + '\n');
+        },
+        debugCallback: function(message) {
+            $('div.logger').append('[DEBUG] ' + message + '\n');
+        }
+    });
 
-	$(window).keypress(scanner.getKeypressListener());
+    $(window).keypress(scanner.getKeypressListener());
 });
 
 </script>
